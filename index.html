@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self Introduction | Ryo Isogawa</title>
+  <style>
+    :root {
+      --bg: #0e1726;
+      --card: #141f35;
+      --accent: #2bd4db;
+      --text: #e5ecf4;
+      --muted: #9fb3c8;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", "Noto Sans JP", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(43, 212, 219, 0.12), transparent 40%),
+                  radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.08), transparent 32%),
+                  var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 64px 24px 40px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      margin: 0 0 12px;
+      letter-spacing: -0.5px;
+    }
+
+    p.lead {
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(20, 31, 53, 0.9), rgba(20, 31, 53, 0.65));
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(43, 212, 219, 0.12);
+      border: 1px solid rgba(43, 212, 219, 0.3);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    li {
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .grid-cols-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      letter-spacing: 0.1px;
+    }
+
+    .contact {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .contact a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+      word-break: break-all;
+    }
+
+    .contact a:hover {
+      color: #7ff6ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 16px 48px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="pill">🚀 Welcome</div>
+    <h1>Isogawa Ryo</h1>
+    <p class="lead">フロントエンド中心のエンジニアとして、UI/UXの質と開発体験の両立を大切にしています。小さな改善の積み重ねで、わくわくするプロダクトを作ります。</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>🧭 今の自分</h2>
+      <ul>
+        <li>Next.js や React を用いたモダンフロントエンド開発をメインに活動。</li>
+        <li>デザインシステムやコンポーネント設計を意識しながら、チームで使いやすい UI を構築。</li>
+        <li>Notion でのドキュメンテーションやタスク整理が得意。コミュニケーションを重視しています。</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>🎯 目指す方向</h2>
+      <ul>
+        <li>ユーザーに届く価値を最短で届けるためのデリバリー最適化。</li>
+        <li>プロダクトのトーン&マナーを守りつつ、挑戦的な UI を試すプロトタイピング。</li>
+        <li>周囲を巻き込みながら、学びを共有し続けるエンジニアリング文化づくり。</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>🛠 技術スタック</h2>
+      <div class="grid-cols-2">
+        <div>
+          <strong>Frontend</strong>
+          <div class="tag-list">
+            <span class="tag">Next.js</span>
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">Vite</span>
+          </div>
+        </div>
+        <div>
+          <strong>Others</strong>
+          <div class="tag-list">
+            <span class="tag">Node.js</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">Notion</span>
+            <span class="tag">Figma</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>💡 最近の取り組み</h2>
+      <ul>
+        <li>アクセシブルなコンポーネントの検証と、Storybook による UI カタログ整備。</li>
+        <li>リリース作業を自動化する CI/CD パイプラインの改善。</li>
+        <li>デザインレビューに参加し、UI ガイドラインに沿った改善提案を実施。</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>📬 連絡先</h2>
+      <div class="contact">
+        <div><strong>Email</strong><br><a href="mailto:hello@isogawaryo.dev">hello@isogawaryo.dev</a></div>
+        <div><strong>GitHub</strong><br><a href="https://github.com/IsogawaRyo" target="_blank" rel="noreferrer">github.com/IsogawaRyo</a></div>
+        <div><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/isogawaryo" target="_blank" rel="noreferrer">linkedin.com/in/isogawaryo</a></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>📝 メモ</h2>
+      <ul>
+        <li>好きなもの: コーヒー、良い UI、整ったドキュメント。</li>
+        <li>価値観: 透明性、継続的な学び、チームでの成果最大化。</li>
+        <li>これから挑戦したいこと: プロダクトマネジメント視点での提案力強化。</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © 2024 Ryo Isogawa. Crafted with curiosity and care.
+  </footer>
+</body>
+</html>
