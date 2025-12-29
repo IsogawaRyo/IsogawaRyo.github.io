@@ -1,0 +1,62 @@
+{
+  "hero": {
+    "name": "五十川 涼",
+    "tagline": "Self Introduction",
+    "description": "Excelで概要を編集できます。"
+  },
+  "selfIntro": [
+    "Excelで自己紹介文を編集してください。"
+  ],
+  "currentSelf": [
+    "現在取り組んでいることをここに記録できます。"
+  ],
+  "direction": [
+    "これから挑戦したい方向性をExcelに入力してください。"
+  ],
+  "stack": [
+    "得意な技術をここに列挙できます。"
+  ],
+  "basicInfo": [
+    {
+      "label": "名前",
+      "value": "五十川 涼（Isogawa Ryo）"
+    },
+    {
+      "label": "誕生日",
+      "value": "2004年4月9日生"
+    },
+    {
+      "label": "関心領域",
+      "value": "エンターテイメントロボット"
+    }
+  ],
+  "recentWork": [
+    "A"
+  ],
+  "studies": [
+    "これまでの学びをExcel上で更新してください。"
+  ],
+  "favorites": [
+    "テーマパーク散策"
+  ],
+  "contact": [
+    {
+      "label": "Email",
+      "value": "isogawa.ryo@gmail.com",
+      "link": "mailto:isogawa.ryo@gmail.com"
+    },
+    {
+      "label": "GitHub",
+      "value": "https://github.com/IsogawaRyo",
+      "link": "https://github.com/IsogawaRyo"
+    },
+    {
+      "label": "LinkedIn",
+      "value": "https://www.linkedin.com/in/isogawaryo",
+      "link": "https://www.linkedin.com/in/isogawaryo"
+    }
+  ],
+  "memo": [
+    "アイデアのメモはここに追記してください。"
+  ]
+}

@@ -98,12 +98,6 @@
       color: var(--muted);
     }
 
-    .grid-cols-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-    }
-
     .tag-list {
       display: flex;
       flex-wrap: wrap;
@@ -119,6 +113,18 @@
       border-radius: 999px;
       font-size: 13px;
       letter-spacing: 0.1px;
+    }
+
+    .text-block {
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .placeholder {
+      color: var(--muted);
+      font-style: italic;
     }
 
     .contact {
@@ -149,75 +155,239 @@
 </head>
 <body>
   <header>
-    <div class="pill">🚀 Self Introduction</div>
-    <h1>五十川 涼</h1>
+    <div class="pill" id="hero-tagline">🚀 Self Introduction</div>
+    <h1 id="hero-name">情報を読み込み中...</h1>
+    <p class="lead" id="hero-lead"></p>
   </header>
 
   <main class="container">
     <section class="card">
       <h2>🪪 基本情報</h2>
-      <ul>
-        <li><strong>名前:</strong> 五十川 涼（Isogawa Ryo）</li>
-        <li><strong>誕生日:</strong> 2004年4月9日生</li>
-        <li><strong>関心領域:</strong> エンターテイメントロボット</li>
-      </ul>
+      <ul id="basic-info-list"></ul>
     </section>
 
     <section class="card">
       <h2>🌟 自己紹介</h2>
+      <div class="text-block" id="self-intro"></div>
     </section>
 
     <section class="card">
       <h2>🧭 今の自分</h2>
+      <div class="text-block" id="current-self"></div>
     </section>
 
     <section class="card">
       <h2>🎯 目指す方向</h2>
+      <div class="text-block" id="direction"></div>
     </section>
 
     <section class="card">
       <h2>🛠 技術スタック</h2>
+      <div class="tag-list" id="stack-list"></div>
     </section>
 
     <section class="card">
       <h2>💡 最近の取り組み</h2>
-      <ul>
-        <li>A</ul>
-      </ul>
+      <ul id="recent-work-list"></ul>
     </section>
 
     <section class="card">
       <h2>📚 学びとこれまで</h2>
-      <ul>
-        <li></li>
-      </ul>
+      <ul id="studies-list"></ul>
     </section>
 
     <section class="card">
       <h2>🎨 日常と好きなこと</h2>
-      <ul>
-        <li>テーマパーク散策</li>
-      </ul>
+      <ul id="favorites-list"></ul>
     </section>
 
     <section class="card">
       <h2>📬 連絡先</h2>
-      <div class="contact">
-        <div><strong>Email</strong><br><a href="mailto:isogawa.ryo@gmail.com">isogawa.ryo@gmail.com</a></div>
-        <div><strong>GitHub</strong><br><a href="https://github.com/IsogawaRyo" target="_blank" rel="noreferrer">github.com/IsogawaRyo</a></div>
-        <div><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/isogawaryo" target="_blank" rel="noreferrer">linkedin.com/in/isogawaryo</a></div>
-      </div>
+      <div class="contact" id="contact-list"></div>
     </section>
 
     <section class="card">
       <h2>📝 メモ</h2>
+      <div class="text-block" id="memo-list"></div>
     </section>
-
   </main>
 
   <footer>
     © 2024 Ryo Isogawa. Crafted with curiosity and care.
   </footer>
 
+  <script>
+    const PLACEHOLDER_TEXT = "Excelファイルを更新するとここに表示されます。";
+
+    function setHero(hero) {
+      const nameEl = document.getElementById("hero-name");
+      const taglineEl = document.getElementById("hero-tagline");
+      const leadEl = document.getElementById("hero-lead");
+
+      const heroName = hero?.name?.trim() || "Excelで名前を設定してください。";
+      const tagline = hero?.tagline?.trim() || "Self Introduction";
+      const description = hero?.description?.trim() || "";
+      nameEl.textContent = heroName;
+      taglineEl.textContent = `🚀 ${tagline}`;
+      leadEl.textContent = description;
+    }
+
+    function renderBasicInfo(items) {
+      const list = document.getElementById("basic-info-list");
+      list.innerHTML = "";
+      if (!items?.length) {
+        const li = document.createElement("li");
+        li.className = "placeholder";
+        li.textContent = PLACEHOLDER_TEXT;
+        list.appendChild(li);
+        return;
+      }
+
+      items.forEach(({ label, value }) => {
+        const li = document.createElement("li");
+        if (label) {
+          const strong = document.createElement("strong");
+          strong.textContent = `${label}:`;
+          li.appendChild(strong);
+          li.append(` ${value}`);
+        } else {
+          li.textContent = value;
+        }
+        list.appendChild(li);
+      });
+    }
+
+    function renderParagraphs(id, items) {
+      const container = document.getElementById(id);
+      container.innerHTML = "";
+      if (!items?.length) {
+        const p = document.createElement("p");
+        p.className = "placeholder";
+        p.textContent = PLACEHOLDER_TEXT;
+        container.appendChild(p);
+        return;
+      }
+      items.forEach(text => {
+        const p = document.createElement("p");
+        p.textContent = text;
+        container.appendChild(p);
+      });
+    }
+
+    function renderList(id, items) {
+      const list = document.getElementById(id);
+      list.innerHTML = "";
+      if (!items?.length) {
+        const li = document.createElement("li");
+        li.className = "placeholder";
+        li.textContent = PLACEHOLDER_TEXT;
+        list.appendChild(li);
+        return;
+      }
+      items.forEach(text => {
+        const li = document.createElement("li");
+        li.textContent = text;
+        list.appendChild(li);
+      });
+    }
+
+    function renderTags(id, items) {
+      const container = document.getElementById(id);
+      container.innerHTML = "";
+      if (!items?.length) {
+        const span = document.createElement("span");
+        span.className = "placeholder";
+        span.textContent = PLACEHOLDER_TEXT;
+        container.appendChild(span);
+        return;
+      }
+      items.forEach(text => {
+        const span = document.createElement("span");
+        span.className = "tag";
+        span.textContent = text;
+        container.appendChild(span);
+      });
+    }
+
+    function renderContact(items) {
+      const container = document.getElementById("contact-list");
+      container.innerHTML = "";
+      if (!items?.length) {
+        const p = document.createElement("p");
+        p.className = "placeholder";
+        p.textContent = PLACEHOLDER_TEXT;
+        container.appendChild(p);
+        return;
+      }
+      items.forEach(({ label, value, link }) => {
+        const wrapper = document.createElement("div");
+        const strong = document.createElement("strong");
+        strong.textContent = label || "Link";
+        wrapper.appendChild(strong);
+        wrapper.appendChild(document.createElement("br"));
+
+        const anchor = document.createElement("a");
+        anchor.href = link || value;
+        anchor.textContent = value;
+        anchor.target = "_blank";
+        anchor.rel = "noreferrer";
+        wrapper.appendChild(anchor);
+
+        container.appendChild(wrapper);
+      });
+    }
+
+    function renderContent(data) {
+      setHero(data.hero);
+      renderBasicInfo(data.basicInfo);
+      renderParagraphs("self-intro", data.selfIntro);
+      renderParagraphs("current-self", data.currentSelf);
+      renderParagraphs("direction", data.direction);
+      renderTags("stack-list", data.stack);
+      renderList("recent-work-list", data.recentWork);
+      renderList("studies-list", data.studies);
+      renderList("favorites-list", data.favorites);
+      renderContact(data.contact);
+      renderParagraphs("memo-list", data.memo);
+    }
+
+    function showError() {
+      const sections = [
+        "basic-info-list",
+        "self-intro",
+        "current-self",
+        "direction",
+        "stack-list",
+        "recent-work-list",
+        "studies-list",
+        "favorites-list",
+        "contact-list",
+        "memo-list",
+      ];
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.innerHTML = "";
+        const p = document.createElement(el.tagName === "UL" ? "li" : "p");
+        p.className = "placeholder";
+        p.textContent = "Excelデータの読み込みに失敗しました。";
+        el.appendChild(p);
+      });
+    }
+
+    async function init() {
+      try {
+        const response = await fetch(`content.json?ts=${Date.now()}`);
+        if (!response.ok) throw new Error("Failed to load content");
+        const data = await response.json();
+        renderContent(data);
+      } catch (error) {
+        console.error(error);
+        showError();
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
 </body>
 </html>
