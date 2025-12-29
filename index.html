@@ -28,6 +28,57 @@
       min-height: 100vh;
     }
 
+    .ticker {
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(20, 31, 53, 0.7);
+      backdrop-filter: blur(6px);
+    }
+
+    .ticker-inner {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      padding: 12px 24px;
+      animation: ticker-scroll 26s linear infinite;
+      width: max-content;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      white-space: nowrap;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .ticker time {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.2px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 12px;
+      letter-spacing: 0.2px;
+      color: var(--text);
+    }
+
+    @keyframes ticker-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
     header {
       padding: 64px 24px 40px;
       text-align: center;
@@ -85,6 +136,12 @@
       font-weight: 600;
     }
 
+    .pill.small {
+      padding: 7px 10px;
+      font-size: 13px;
+      gap: 6px;
+    }
+
     ul {
       list-style: none;
       padding: 0;
@@ -96,6 +153,208 @@
     li {
       line-height: 1.6;
       color: var(--muted);
+    }
+
+    .news {
+      display: grid;
+      gap: 16px;
+    }
+
+    .news-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .news-tabs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 8px;
+    }
+
+    .news-tab {
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .news-tab:hover {
+      border-color: rgba(43, 212, 219, 0.4);
+      color: #7ff6ff;
+    }
+
+    .news-tab.is-active {
+      background: rgba(43, 212, 219, 0.14);
+      border-color: rgba(43, 212, 219, 0.6);
+      color: var(--text);
+      box-shadow: 0 10px 30px rgba(43, 212, 219, 0.15);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .news-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .news-item {
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .news-item:hover {
+      border-color: rgba(43, 212, 219, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .news-item.is-featured {
+      background: linear-gradient(135deg, rgba(43, 212, 219, 0.12), rgba(43, 212, 219, 0.02));
+      border-color: rgba(43, 212, 219, 0.5);
+      box-shadow: 0 14px 40px rgba(43, 212, 219, 0.18);
+    }
+
+    .news-meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.2px;
+    }
+
+    .news-title {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.1px;
+      color: var(--text);
+    }
+
+    .news-summary {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .news-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .news-link {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+    }
+
+    .news-link:hover {
+      color: #7ff6ff;
+      border-color: rgba(43, 212, 219, 0.5);
+    }
+
+    .news-timeline {
+      position: relative;
+      padding-left: 18px;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 12px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(43, 212, 219, 0.9);
+      left: -19px;
+      top: 4px;
+      box-shadow: 0 0 0 4px rgba(43, 212, 219, 0.1);
+    }
+
+    .timeline-date {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.1px;
+    }
+
+    .timeline-title {
+      margin: 4px 0 0;
+      color: var(--text);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .timeline-tag {
+      margin-top: 4px;
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      padding: 5px 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .archive-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .archive-link:hover {
+      color: #7ff6ff;
+    }
+
+    @media (max-width: 900px) {
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ticker-inner {
+        animation-duration: 32s;
+      }
     }
 
     .grid-cols-2 {
@@ -153,7 +412,31 @@
     <h1>五十川 涼</h1>
   </header>
 
+  <section class="ticker" aria-label="最新のお知らせ">
+    <div class="ticker-inner" id="ticker-inner">
+      <!-- JS populated -->
+    </div>
+  </section>
+
   <main class="container">
+    <section class="card news" id="news">
+      <div class="news-header">
+        <h2>📰 ニュース / 更新情報</h2>
+        <a class="pill small" href="#news-archive">すべて見る →</a>
+      </div>
+      <div class="news-tabs" role="tablist" aria-label="ニュースカテゴリ">
+        <button class="news-tab is-active" data-filter="all" role="tab">All</button>
+        <button class="news-tab" data-filter="release" role="tab">Release</button>
+        <button class="news-tab" data-filter="event" role="tab">Event</button>
+        <button class="news-tab" data-filter="media" role="tab">Media</button>
+        <button class="news-tab" data-filter="update" role="tab">Update</button>
+      </div>
+      <div class="news-grid">
+        <div class="news-list" id="news-list" aria-live="polite"></div>
+        <div class="news-timeline" id="news-timeline" aria-hidden="true"></div>
+      </div>
+    </section>
+
     <section class="card">
       <h2>🪪 基本情報</h2>
       <ul>
@@ -212,10 +495,160 @@
     <section class="card">
       <h2>📝 メモ</h2>
     </section>
+
+    <section class="card" id="news-archive">
+      <h2>📂 ニュースアーカイブ</h2>
+      <p class="news-summary">過去の更新は順次アーカイブ化予定です。お問い合わせはメールまたはSNSへご連絡ください。</p>
+      <a class="archive-link" href="mailto:isogawa.ryo@gmail.com">アーカイブ追加を依頼する</a>
+    </section>
   </main>
 
   <footer>
     © 2024 Ryo Isogawa. Crafted with curiosity and care.
   </footer>
+
+  <script type="application/json" id="news-data">
+    [
+      {
+        "date": "2024-08-10",
+        "title": "ロボット系LTで登壇（東京）",
+        "summary": "エンターテイメントロボットのインタラクション設計について登壇。デモと設計プロセスを共有しました。",
+        "category": "event",
+        "link": "https://example.com/talk",
+        "featured": true
+      },
+      {
+        "date": "2024-07-02",
+        "title": "Webポートフォリオ公開",
+        "summary": "自己紹介サイトをアップデートし、研究・プロジェクトをまとめました。",
+        "category": "release",
+        "link": "https://isogawaryo.github.io/",
+        "featured": false
+      },
+      {
+        "date": "2024-06-18",
+        "title": "メディア掲載：学生ロボティクス特集",
+        "summary": "エンターテイメントロボット開発のインタビュー記事が掲載されました。",
+        "category": "media",
+        "link": "https://example.com/media",
+        "featured": false
+      },
+      {
+        "date": "2024-05-25",
+        "title": "作品動画を追加",
+        "summary": "最新プロトタイプのデモ動画をポートフォリオに追記しました。",
+        "category": "update",
+        "link": "https://example.com/demo",
+        "featured": false
+      },
+      {
+        "date": "2024-04-30",
+        "title": "ロボットアニメーションの新規検証",
+        "summary": "表情とモーションの同期実験を開始し、初期結果をまとめました。",
+        "category": "update",
+        "link": "https://example.com/research",
+        "featured": false
+      }
+    ]
+  </script>
+
+  <script>
+    const newsData = JSON.parse(document.getElementById("news-data").textContent || "[]");
+    const newsListEl = document.getElementById("news-list");
+    const newsTimelineEl = document.getElementById("news-timeline");
+    const tickerInner = document.getElementById("ticker-inner");
+    const tabs = document.querySelectorAll(".news-tab");
+
+    const categoryLabel = {
+      release: "Release",
+      event: "Event",
+      media: "Media",
+      update: "Update"
+    };
+
+    function renderNews(filter = "all") {
+      if (!newsListEl) return;
+      newsListEl.innerHTML = "";
+
+      const filtered = newsData
+        .filter(item => filter === "all" ? true : item.category === filter)
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      filtered.slice(0, 6).forEach(item => {
+        const wrapper = document.createElement("article");
+        wrapper.className = `news-item ${item.featured ? "is-featured" : ""}`;
+
+        const meta = document.createElement("div");
+        meta.className = "news-meta";
+        meta.innerHTML = `
+          <time datetime="${item.date}">${item.date}</time>
+          <span class="badge">${categoryLabel[item.category] || "Info"}</span>
+          ${item.featured ? '<span class="badge">NEW</span>' : ""}
+        `;
+
+        const title = document.createElement("h3");
+        title.className = "news-title";
+        title.textContent = item.title;
+
+        const summary = document.createElement("p");
+        summary.className = "news-summary";
+        summary.textContent = item.summary;
+
+        const actions = document.createElement("div");
+        actions.className = "news-actions";
+        actions.innerHTML = `<a class="news-link" href="${item.link}" target="_blank" rel="noreferrer">詳細を見る →</a>`;
+
+        wrapper.append(meta, title, summary, actions);
+        newsListEl.appendChild(wrapper);
+      });
+    }
+
+    function renderTimeline() {
+      if (!newsTimelineEl) return;
+      newsTimelineEl.innerHTML = "";
+      newsData
+        .slice()
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .forEach(item => {
+          const node = document.createElement("div");
+          node.className = "timeline-item";
+          node.innerHTML = `
+            <div class="timeline-date">${item.date}</div>
+            <div class="timeline-title">${item.title}</div>
+            <div class="timeline-tag">${categoryLabel[item.category] || "Info"}</div>
+          `;
+          newsTimelineEl.appendChild(node);
+        });
+    }
+
+    function renderTicker() {
+      if (!tickerInner) return;
+      tickerInner.innerHTML = "";
+      const loopData = [...newsData, ...newsData];
+      loopData.forEach(item => {
+        const node = document.createElement("div");
+        node.className = "ticker-item";
+        node.innerHTML = `
+          <span class="badge">${categoryLabel[item.category] || "Info"}</span>
+          <time datetime="${item.date}">${item.date}</time>
+          <span>${item.title}</span>
+        `;
+        tickerInner.appendChild(node);
+      });
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("is-active"));
+        tab.classList.add("is-active");
+        const filter = tab.dataset.filter || "all";
+        renderNews(filter);
+      });
+    });
+
+    renderNews();
+    renderTimeline();
+    renderTicker();
+  </script>
 </body>
 </html>
