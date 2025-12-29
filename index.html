@@ -508,48 +508,7 @@
   </footer>
 
   <script type="application/json" id="news-data">
-    [
-      {
-        "date": "2024-08-10",
-        "title": "ロボット系LTで登壇（東京）",
-        "summary": "エンターテイメントロボットのインタラクション設計について登壇。デモと設計プロセスを共有しました。",
-        "category": "event",
-        "link": "https://example.com/talk",
-        "featured": true
-      },
-      {
-        "date": "2024-07-02",
-        "title": "Webポートフォリオ公開",
-        "summary": "自己紹介サイトをアップデートし、研究・プロジェクトをまとめました。",
-        "category": "release",
-        "link": "https://isogawaryo.github.io/",
-        "featured": false
-      },
-      {
-        "date": "2024-06-18",
-        "title": "メディア掲載：学生ロボティクス特集",
-        "summary": "エンターテイメントロボット開発のインタビュー記事が掲載されました。",
-        "category": "media",
-        "link": "https://example.com/media",
-        "featured": false
-      },
-      {
-        "date": "2024-05-25",
-        "title": "作品動画を追加",
-        "summary": "最新プロトタイプのデモ動画をポートフォリオに追記しました。",
-        "category": "update",
-        "link": "https://example.com/demo",
-        "featured": false
-      },
-      {
-        "date": "2024-04-30",
-        "title": "ロボットアニメーションの新規検証",
-        "summary": "表情とモーションの同期実験を開始し、初期結果をまとめました。",
-        "category": "update",
-        "link": "https://example.com/research",
-        "featured": false
-      }
-    ]
+    []
   </script>
 
   <script>
@@ -573,6 +532,14 @@
       const filtered = newsData
         .filter(item => filter === "all" ? true : item.category === filter)
         .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      if (filtered.length === 0) {
+        const placeholder = document.createElement("p");
+        placeholder.className = "news-summary";
+        placeholder.textContent = "ニュースは現在準備中です。最新情報は決まり次第この場所に掲載します。";
+        newsListEl.appendChild(placeholder);
+        return;
+      }
 
       filtered.slice(0, 6).forEach(item => {
         const wrapper = document.createElement("article");
@@ -606,6 +573,15 @@
     function renderTimeline() {
       if (!newsTimelineEl) return;
       newsTimelineEl.innerHTML = "";
+
+      if (!newsData.length) {
+        const placeholder = document.createElement("p");
+        placeholder.className = "news-summary";
+        placeholder.textContent = "タイムラインの内容は準備中です。しばらくお待ちください。";
+        newsTimelineEl.appendChild(placeholder);
+        return;
+      }
+
       newsData
         .slice()
         .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -624,6 +600,17 @@
     function renderTicker() {
       if (!tickerInner) return;
       tickerInner.innerHTML = "";
+
+      if (!newsData.length) {
+        tickerInner.style.animation = "none";
+        const placeholder = document.createElement("div");
+        placeholder.className = "ticker-item";
+        placeholder.textContent = "最新情報の公開をお待ちください。";
+        tickerInner.appendChild(placeholder);
+        return;
+      }
+
+      tickerInner.style.animation = "";
       const loopData = [...newsData, ...newsData];
       loopData.forEach(item => {
         const node = document.createElement("div");
