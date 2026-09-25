@@ -3,391 +3,156 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Self Introduction | Ryo Isogawa</title>
+  <meta name="theme-color" content="#f4f3ef">
+  <meta name="description" content="五十川 涼の自己紹介ページ。準備中です。">
+  <title>五十川 涼</title>
   <style>
     :root {
-      --bg: #0e1726;
-      --card: #141f35;
-      --accent: #2bd4db;
-      --text: #e5ecf4;
-      --muted: #9fb3c8;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --paper: #f4f3ef;
+      --ink: #11110f;
+      --muted: #6e6d67;
+      --line: #cbc9c0;
+      --accent: #ff3b30;
+      --dot: rgba(17, 17, 15, 0.16);
+      --max: 1440px;
+      --pad: clamp(20px, 4vw, 64px);
+      --mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Inter", "Noto Sans JP", system-ui, -apple-system, sans-serif;
-      background: radial-gradient(circle at 20% 20%, rgba(43, 212, 219, 0.12), transparent 40%),
-                  radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.08), transparent 32%),
-                  var(--bg);
-      color: var(--text);
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Helvetica Neue", "Noto Sans JP", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image: radial-gradient(var(--dot) 0.7px, transparent 0.7px);
+      background-size: 12px 12px;
+      content: "";
+      pointer-events: none;
+    }
+    ::selection { background: var(--accent); color: white; }
+
+    .shell {
+      width: min(100%, var(--max));
       min-height: 100vh;
-    }
-
-    header {
-      padding: 64px 24px 40px;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 1080px;
+      min-height: 100svh;
       margin: 0 auto;
-      padding: 0 24px 80px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      border-inline: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 94%, transparent);
+      display: flex;
+      flex-direction: column;
     }
-
-    h1 {
-      font-size: clamp(32px, 5vw, 48px);
-      margin: 0 0 12px;
-      letter-spacing: -0.5px;
+    .topbar, .status, footer {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
     }
-
-    p.lead {
-      max-width: 720px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    .card {
-      background: linear-gradient(135deg, rgba(20, 31, 53, 0.9), rgba(20, 31, 53, 0.65));
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(6px);
-    }
-
-    .card h2 {
-      margin-top: 0;
-      font-size: 22px;
+    .topbar {
+      min-height: 64px;
+      padding: 0 var(--pad);
+      border-bottom: 1px solid var(--line);
       display: flex;
       align-items: center;
-      gap: 10px;
     }
-
-    .pill {
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; }
+    .brand-mark {
+      width: 20px;
+      aspect-ratio: 1;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+    .brand-mark::after {
+      width: 4px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--accent);
+      content: "";
+    }
+    .hero {
+      flex: 1;
+      padding: clamp(96px, 15vw, 210px) var(--pad) 64px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: clamp(28px, 4vw, 48px);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      position: absolute;
+      top: clamp(40px, 7vw, 96px);
+      right: var(--pad);
+      width: clamp(80px, 12vw, 170px);
+      aspect-ratio: 1;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent) 0 3%, transparent 3.5%),
+                  repeating-radial-gradient(circle, transparent 0 13px, var(--line) 14px 15px);
+      content: "";
+      opacity: 0.8;
+    }
+    h1 {
+      max-width: 1050px;
+      margin: 0;
+      font-size: clamp(58px, 11.5vw, 164px);
+      font-weight: 500;
+      letter-spacing: -0.075em;
+      line-height: 0.84;
+    }
+    .status {
+      margin: 0;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: rgba(43, 212, 219, 0.12);
-      border: 1px solid rgba(43, 212, 219, 0.3);
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 12px 0 0;
-      display: grid;
       gap: 12px;
-    }
-
-    li {
-      line-height: 1.6;
       color: var(--muted);
+      text-transform: none;
     }
-
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
+    .status::before {
+      width: 8px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--accent);
+      content: "";
     }
-
-    .tag {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text);
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 13px;
-      letter-spacing: 0.1px;
-    }
-
-    .text-block {
-      display: grid;
-      gap: 10px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .placeholder {
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    .contact {
-      display: grid;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .contact a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.2s ease;
-      word-break: break-all;
-    }
-
-    .contact a:hover {
-      color: #7ff6ff;
-    }
-
     footer {
-      text-align: center;
-      padding: 30px 16px 48px;
-      color: var(--muted);
-      font-size: 14px;
+      padding: 32px var(--pad);
+      letter-spacing: 0.1em;
+    }
+    @media (max-width: 720px) {
+      .shell { border-inline: 0; }
+      .topbar { min-height: 56px; }
+      .hero { padding-top: 104px; }
+      .hero::after { width: 72px; top: 30px; }
+      h1 { font-size: clamp(54px, 20vw, 88px); }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="pill" id="hero-tagline">🚀 Self Introduction</div>
-    <h1 id="hero-name">情報を読み込み中...</h1>
-    <p class="lead" id="hero-lead"></p>
-  </header>
+  <div class="shell">
+    <nav class="topbar" aria-label="サイト情報">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>RYO</div>
+    </nav>
 
-  <main class="container">
-    <section class="card">
-      <h2>🪪 基本情報</h2>
-      <ul id="basic-info-list"></ul>
-    </section>
+    <header class="hero">
+      <h1>五十川 涼</h1>
+      <p class="status">coming soon...</p>
+    </header>
 
-    <section class="card">
-      <h2>🌟 自己紹介</h2>
-      <div class="text-block" id="self-intro"></div>
-    </section>
-
-    <section class="card">
-      <h2>🧭 今の自分</h2>
-      <div class="text-block" id="current-self"></div>
-    </section>
-
-    <section class="card">
-      <h2>🎯 目指す方向</h2>
-      <div class="text-block" id="direction"></div>
-    </section>
-
-    <section class="card">
-      <h2>🛠 技術スタック</h2>
-      <div class="tag-list" id="stack-list"></div>
-    </section>
-
-    <section class="card">
-      <h2>💡 最近の取り組み</h2>
-      <ul id="recent-work-list"></ul>
-    </section>
-
-    <section class="card">
-      <h2>📚 学びとこれまで</h2>
-      <ul id="studies-list"></ul>
-    </section>
-
-    <section class="card">
-      <h2>🎨 日常と好きなこと</h2>
-      <ul id="favorites-list"></ul>
-    </section>
-
-    <section class="card">
-      <h2>📬 連絡先</h2>
-      <div class="contact" id="contact-list"></div>
-    </section>
-
-    <section class="card">
-      <h2>📝 メモ</h2>
-      <div class="text-block" id="memo-list"></div>
-    </section>
-  </main>
-
-  <footer>
-    © 2024 Ryo Isogawa. Crafted with curiosity and care.
-  </footer>
-
-  <script>
-    const PLACEHOLDER_TEXT = "Excelファイルを更新するとここに表示されます。";
-
-    function setHero(hero) {
-      const nameEl = document.getElementById("hero-name");
-      const taglineEl = document.getElementById("hero-tagline");
-      const leadEl = document.getElementById("hero-lead");
-
-      const heroName = hero?.name?.trim() || "Excelで名前を設定してください。";
-      const tagline = hero?.tagline?.trim() || "Self Introduction";
-      const description = hero?.description?.trim() || "";
-      nameEl.textContent = heroName;
-      taglineEl.textContent = `🚀 ${tagline}`;
-      leadEl.textContent = description;
-    }
-
-    function renderBasicInfo(items) {
-      const list = document.getElementById("basic-info-list");
-      list.innerHTML = "";
-      if (!items?.length) {
-        const li = document.createElement("li");
-        li.className = "placeholder";
-        li.textContent = PLACEHOLDER_TEXT;
-        list.appendChild(li);
-        return;
-      }
-
-      items.forEach(({ label, value }) => {
-        const li = document.createElement("li");
-        if (label) {
-          const strong = document.createElement("strong");
-          strong.textContent = `${label}:`;
-          li.appendChild(strong);
-          li.append(` ${value}`);
-        } else {
-          li.textContent = value;
-        }
-        list.appendChild(li);
-      });
-    }
-
-    function renderParagraphs(id, items) {
-      const container = document.getElementById(id);
-      container.innerHTML = "";
-      if (!items?.length) {
-        const p = document.createElement("p");
-        p.className = "placeholder";
-        p.textContent = PLACEHOLDER_TEXT;
-        container.appendChild(p);
-        return;
-      }
-      items.forEach(text => {
-        const p = document.createElement("p");
-        p.textContent = text;
-        container.appendChild(p);
-      });
-    }
-
-    function renderList(id, items) {
-      const list = document.getElementById(id);
-      list.innerHTML = "";
-      if (!items?.length) {
-        const li = document.createElement("li");
-        li.className = "placeholder";
-        li.textContent = PLACEHOLDER_TEXT;
-        list.appendChild(li);
-        return;
-      }
-      items.forEach(text => {
-        const li = document.createElement("li");
-        li.textContent = text;
-        list.appendChild(li);
-      });
-    }
-
-    function renderTags(id, items) {
-      const container = document.getElementById(id);
-      container.innerHTML = "";
-      if (!items?.length) {
-        const span = document.createElement("span");
-        span.className = "placeholder";
-        span.textContent = PLACEHOLDER_TEXT;
-        container.appendChild(span);
-        return;
-      }
-      items.forEach(text => {
-        const span = document.createElement("span");
-        span.className = "tag";
-        span.textContent = text;
-        container.appendChild(span);
-      });
-    }
-
-    function renderContact(items) {
-      const container = document.getElementById("contact-list");
-      container.innerHTML = "";
-      if (!items?.length) {
-        const p = document.createElement("p");
-        p.className = "placeholder";
-        p.textContent = PLACEHOLDER_TEXT;
-        container.appendChild(p);
-        return;
-      }
-      items.forEach(({ label, value, link }) => {
-        const wrapper = document.createElement("div");
-        const strong = document.createElement("strong");
-        strong.textContent = label || "Link";
-        wrapper.appendChild(strong);
-        wrapper.appendChild(document.createElement("br"));
-
-        const anchor = document.createElement("a");
-        anchor.href = link || value;
-        anchor.textContent = value;
-        anchor.target = "_blank";
-        anchor.rel = "noreferrer";
-        wrapper.appendChild(anchor);
-
-        container.appendChild(wrapper);
-      });
-    }
-
-    function renderContent(data) {
-      setHero(data.hero);
-      renderBasicInfo(data.basicInfo);
-      renderParagraphs("self-intro", data.selfIntro);
-      renderParagraphs("current-self", data.currentSelf);
-      renderParagraphs("direction", data.direction);
-      renderTags("stack-list", data.stack);
-      renderList("recent-work-list", data.recentWork);
-      renderList("studies-list", data.studies);
-      renderList("favorites-list", data.favorites);
-      renderContact(data.contact);
-      renderParagraphs("memo-list", data.memo);
-    }
-
-    function showError() {
-      const sections = [
-        "basic-info-list",
-        "self-intro",
-        "current-self",
-        "direction",
-        "stack-list",
-        "recent-work-list",
-        "studies-list",
-        "favorites-list",
-        "contact-list",
-        "memo-list",
-      ];
-      sections.forEach(id => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.innerHTML = "";
-        const p = document.createElement(el.tagName === "UL" ? "li" : "p");
-        p.className = "placeholder";
-        p.textContent = "Excelデータの読み込みに失敗しました。";
-        el.appendChild(p);
-      });
-    }
-
-    async function init() {
-      try {
-        const response = await fetch(`content.json?ts=${Date.now()}`);
-        if (!response.ok) throw new Error("Failed to load content");
-        const data = await response.json();
-        renderContent(data);
-      } catch (error) {
-        console.error(error);
-        showError();
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", init);
-  </script>
+    <footer>
+      <span>© 2026 Ryo Isogawa</span>
+    </footer>
+  </div>
 </body>
 </html>
