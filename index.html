@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f3ef">
+  <meta name="description" content="五十川 涼の自己紹介ページ。準備中です。">
+  <title>五十川 涼</title>
+  <style>
+    :root {
+      --paper: #f4f3ef;
+      --ink: #11110f;
+      --muted: #6e6d67;
+      --line: #cbc9c0;
+      --accent: #ff3b30;
+      --dot: rgba(17, 17, 15, 0.16);
+      --max: 1440px;
+      --pad: clamp(20px, 4vw, 64px);
+      --mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Helvetica Neue", "Noto Sans JP", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image: radial-gradient(var(--dot) 0.7px, transparent 0.7px);
+      background-size: 12px 12px;
+      content: "";
+      pointer-events: none;
+    }
+    ::selection { background: var(--accent); color: white; }
+
+    .shell {
+      width: min(100%, var(--max));
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0 auto;
+      border-inline: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 94%, transparent);
+      display: flex;
+      flex-direction: column;
+    }
+    .topbar, .status, footer {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .topbar {
+      min-height: 64px;
+      padding: 0 var(--pad);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; }
+    .brand-mark {
+      width: 20px;
+      aspect-ratio: 1;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+    .brand-mark::after {
+      width: 4px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--accent);
+      content: "";
+    }
+    .hero {
+      flex: 1;
+      padding: clamp(96px, 15vw, 210px) var(--pad) 64px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: clamp(28px, 4vw, 48px);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      position: absolute;
+      top: clamp(40px, 7vw, 96px);
+      right: var(--pad);
+      width: clamp(80px, 12vw, 170px);
+      aspect-ratio: 1;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent) 0 3%, transparent 3.5%),
+                  repeating-radial-gradient(circle, transparent 0 13px, var(--line) 14px 15px);
+      content: "";
+      opacity: 0.8;
+    }
+    h1 {
+      max-width: 1050px;
+      margin: 0;
+      font-size: clamp(58px, 11.5vw, 164px);
+      font-weight: 500;
+      letter-spacing: -0.075em;
+      line-height: 0.84;
+    }
+    .status {
+      margin: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      text-transform: none;
+    }
+    .status::before {
+      width: 8px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--accent);
+      content: "";
+    }
+    footer {
+      padding: 32px var(--pad);
+      letter-spacing: 0.1em;
+    }
+    @media (max-width: 720px) {
+      .shell { border-inline: 0; }
+      .topbar { min-height: 56px; }
+      .hero { padding-top: 104px; }
+      .hero::after { width: 72px; top: 30px; }
+      h1 { font-size: clamp(54px, 20vw, 88px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="topbar" aria-label="サイト情報">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>RYO</div>
+    </nav>
+
+    <header class="hero">
+      <h1>五十川 涼</h1>
+      <p class="status">coming soon...</p>
+    </header>
+
+    <footer>
+      <span>© 2026 Ryo Isogawa</span>
+    </footer>
+  </div>
+</body>
+</html>
